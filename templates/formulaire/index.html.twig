@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Champs{% endblock %}
+
+{% block body %}
+<div class="container container-page">
+    <div class="row justify-content-center">
+        <div class="col-md-4" id="card-left-soumise-data">
+            <h1 class="text-center title-formulaire">{{ formulaire.titre }}</h1>
+            <form action="{{ path('soumettre_formulaire', { 'id': formulaire.id }) }}" method="post" class="form">
+                {% for champ in formulaire.champs %}
+                    <div class="row mb-3">
+                        <div class="col-sm-12">
+                            {# tester le type de champs #}
+                            {% if champ.type == 'text' %}
+                                <input type="text" class="form-control" name="{{ champ.nom }}" placeholder="{{ champ.nom }}" required/>
+                            {% elseif champ.type == 'number' %}
+                                <input type="number" class="form-control" name="{{ champ.nom }}" placeholder="{{ champ.nom }}" required />
+                            {% elseif champ.type == 'date' %}
+                                <input type="date" class="form-control" name="{{ champ.nom }}" placeholder="{{ champ.nom }}" required />
+                            {% elseif champ.type == 'radio' %}
+                                <div>
+                                    <strong>{{ champ.nom }}</strong>
+                                    {% if champ.options is not empty %}
+                                        {% for option in champ.options %}
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="{{ champ.nom }}" value="{{ option }}" id="{{ champ.nom ~ '_' ~ option }}" required>
+                                                <label class="form-check-label" for="{{ champ.nom ~ '_' ~ option }}">{{ option }}</label>
+                                            </div>
+                                        {% endfor %}
+                                    {% else %}
+                                        <p>Aucune option disponible.</p>
+                                    {% endif %}
+                                </div>
+                            {% elseif champ.type == 'selectbox' %}
+                                <div>
+                                    <strong>{{ champ.nom }}</strong>
+                                    {% if champ.options is not empty %}
+                                        <select class="form-select"  name="{{ champ.nom }}"  >
+                                            {% for option in champ.options %}
+                                            <option value="{{option}}">{{option}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    {% else %}
+                                        <p>Aucune option disponible.</p>
+                                    {% endif %}
+                                </div>
+                            {% elseif champ.type == 'checkbox' %}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="row mb-1">
+                    <div class="col-md-6 mx-auto">
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-8" id="table-list">
+            <div class="table-responsive">
+                <table id="datalist">
+                    <thead>
+                        <tr>
+                            {% if reponses|length > 0 %}
+                                {% for key in reponses[0].data|keys %}
+                                    <th>{{ key }}</th>
+                                {% endfor %}
+                            {% else %}
+                                <th>Oups, c'est vide !</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        {% for reponse in reponses %}
+                            <tr>
+                                {% for key, value in reponse.data %}
+                                    <td>{{ value }}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

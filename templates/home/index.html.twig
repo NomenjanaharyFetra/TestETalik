@@ -1,0 +1,43 @@
+{# Affichage page d'accueil et pour créer un formulaire #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Home-page{% endblock %}
+
+{% block body %}
+    <div class="container container-page">
+        <div class="row justify-content-center">
+            <div class="col-md-6 left-card">
+                <h1 id="text-change">
+                    <strong id="dynamic-text">Bienvenue chez vous ! 
+                    <span class="change-color"></span>
+                    </strong>
+                </h1>            
+            </div>
+            <div class="col-md-6 right-card">
+                <div class="card card-formulaire">
+                    <div class="card-body">
+                        <h1 class="titre-formulaire">Créer un Formulaire</h1>
+                        {{ form_start(form, {'attr': {'class': 'form-group'}}) }}
+                        
+                        <div class="mb-3">
+                            {{ form_row(form.titre, {'attr': {'class': 'form-control', 'placeholder': 'Titre du formulaire'}}) }}
+                        </div>
+
+                        <div id="champs-container" data-prototype="{{ form_widget(form.champs.vars.prototype)|e('html') }}">
+                            {{ form_widget(form.champs) }}
+                        </div>
+
+                        <div class="text-center">
+                            <button class="btn button-plus" ><img src="{{asset('images/plus.png')}}" id="add-champ" alt="">
+                            <button class="btn btn-primary">Créer</button>
+                        </div>
+                        {{ form_end(form) }}
+                        <script src="{{ asset('js/formulaire.js') }}"></script>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{asset("js/change-text.js")}}"></script>
+{% endblock %}

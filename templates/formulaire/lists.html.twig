@@ -1,0 +1,54 @@
+{# List des champs corresponds à chaque formulaires et l'utilisateur connecter #}
+{% extends "base.html.twig" %}
+
+{% block title %}Listes{% endblock %}
+
+{% block body %}
+    <div class="container container-page ">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+
+            {% if resultatsParFormulaire|length == 0 %}
+                <div class="alert alert-danger">Oups Aucun! Vous voulez créer un formulaire ? <a href="{{path('app_home')}}">cliquer ici</a></div>
+            {% endif %}
+            <h3 class="text-center mb-4">RESULTATS DES FORMULAIRES</h1>
+            {% for groupe in resultatsParFormulaire %}
+                
+                <div class="card mb-5 shadow-sm">
+                    <div class="card-header">
+                        <p>{{groupe.formulaire.titre}}</p>
+                        <a href="{{ path('voir_formulaire', { 'id': groupe.formulaire.id }) }}" class="btn btn-primary">Voir Formulaire</a>
+                    </div>
+
+                    <div class="card-body">
+                        {% if groupe.resultats is not empty %}
+                            <div class="table-responsive " >
+                                <table id="datalist">
+                                    <thead>
+                                        <tr>                                            
+                                            {% for champ, valeur in groupe.resultats[0].data %}
+                                                <th>{{ champ }}</th>
+                                            {% endfor %}
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table-body">
+                                        {% for resultat in groupe.resultats %}
+                                            <tr>
+                                                {% for champ, valeur in resultat.data %}
+                                                    <td>{{ valeur }}</td>
+                                                {% endfor %}
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                </table>
+                            </div>
+                        {% else %}
+                            <p class="text-muted" >Aucun</p>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

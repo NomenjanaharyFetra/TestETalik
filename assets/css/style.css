@@ -1,0 +1,294 @@
+:root{
+    --red-color:#ff0000;
+    --white-color:#FFFFFF;
+    --dark-color:#030303;
+    --White-gray:#f4f6f9;
+    --blue:#007bff;
+    --white-blue-color:#ebebed;
+    --white-gray-blue:#ddd;
+    --white-gray-black:#f2f2f2;
+    --red-gray-color:#b21a1a;
+}
+body{
+    background-color: var(--white-color);
+}
+
+/* style pour le header */
+.navbar-brand{
+    font-size: 16px;
+    font-weight: 400;
+}
+.navbar-brand:hover{
+    text-decoration: none;
+    color: var(--red-color);
+}
+.nav-link{
+    font-size: 16px;
+}
+.nav-link:hover{
+    text-decoration: none;
+    color: var(--red-color);
+}
+.navbar{
+    background-color: var(--white-color);
+    box-shadow: 0 9px 21px 5px rgba(149, 144, 144, 0.1);
+    position: fixed;
+    margin-top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+
+/* Style pour le page d'accueil */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.change-color{
+    color: var(--red-color);
+}
+.left-card{
+    padding: 30px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+    border: none;
+}
+.container-page{
+    padding-top: 70px;
+    margin-bottom: 20px;
+}
+#text-change .text-change{
+    color: #007bff;    
+}
+#text-change{
+    font-size: 40px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+    #text-change{
+        font-size: 20px;
+    }
+    
+}
+
+
+.card-formulaire .card-body{
+    background-color: var(--white-color);
+    box-shadow: 0 9px 21px 5px rgba(91, 71, 71, 0.2);
+    height: auto;
+    border-radius: 20px;
+    overflow: hidden;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+    height: 100%;
+}
+.titre-formulaire{
+    color: red;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+}
+#formulaire_champs{
+    color: #ff0000;
+}
+.card-formulaire .card-body:hover{
+    transform: scale(1.02);
+}
+.button-plus{
+    padding: 0;
+    margin-right: 30px;
+}
+.button-plus:hover{
+    background-color: #b21a1a;
+    padding: 0;
+}
+/* Style pour la nouvelle page apres submit de creation formulaire */
+#card-left-soumise-data{
+    background-color: var(--white-color) !important;
+    box-shadow: 0 9px 21px 5px rgba(91, 71, 71, 0.1);
+    border-radius: 10px;
+    padding: 10px 10px;
+    overflow: hidden;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+    height: 100%;
+}
+.form-control,.form-select{
+    background-color: var(--white-color) !important;
+    box-shadow: 0 9px 21px 5px rgba(91, 71, 71, 0.1);
+    border-radius: 10px;
+    border: none;
+    overflow: hidden;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+    padding: 10px 20px;
+}
+.form-select option{
+padding: 10px;
+}
+.label-field{
+    color: #939090;
+}
+.title-formulaire{
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 33px;
+}
+#card-left-soumise-data:hover{
+    transform: scale(1.02);
+}
+.form-control:active{
+    transform: scale(1.02);
+}
+
+.list-unstyled hr{
+    margin: 3px;
+    color: #c6c6cd;
+}
+.list-unstyled li{
+    color: #3b3838;
+    font-size: 14px;
+}
+
+/* tableau */
+.table-responsive{
+    width: 100%;
+    overflow-x: auto;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+.table-responsive:hover{
+    transform: scale(1.02);
+}
+#datalist {
+    width: 100%;
+    background-color: var(--white-color);
+    border-collapse: collapse;
+}
+
+#datalist thead{
+    background-color: var(--red-color);
+    color: var(--white-color);
+    padding: 10px; 
+    text-align: left;
+    font-weight: bold;
+    font-size: 14px;
+}
+#datalist thead th {
+    padding: 10px; 
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+#datalist tbody tr {
+    border-bottom: 1px solid var(--white-blue-color);
+}
+
+
+#datalist tbody td {
+    padding: 10px 0 10px 0;
+    font-size: 14px;
+    text-align: center;
+}
+#datalist a {
+    text-decoration: none;
+    color: var(--white-color);
+}
+.card-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card-header p{
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+
+/* login */
+.login-card {
+    background-color: white;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%;
+}
+input::placeholder {
+    color: #b0b0b0;
+}
+
+.btn-primary {
+    background-color: var(--red-color);
+    border: none;
+    border-radius: 10px;
+    color: var(--white-color);
+
+}
+
+.btn-primary:hover {
+    background-color: var(--red-gray-color);
+    text-decoration: none;
+    list-style: none;
+}
+
+a {
+    color: #4b00ff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+#card-login-data{
+    padding:20px;
+    background-color: var(--white-color) !important;
+    box-shadow: 0 9px 21px 5px rgba(91, 71, 71, 0.1);
+    border-radius: 20px;
+    min-width: 100%;
+    overflow: hidden;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+    padding: 10px 20px;
+}
+#card-login-data form input{
+    padding: 10px;
+    
+}
+.submit-row{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.title-login{
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 20px;
+}
+#card-login-data:hover{
+    transform: scale(1.02);
+}
+/* register */
+.form-change-erreur div ul li{
+    color: red;
+    text-decoration: none;
+    list-style: none;
+}
+/* List des formulaires */
+#title-resultat{
+    text-transform: uppercase;
+    background-color: #030303;
+}

@@ -1,0 +1,12 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+# afficher page erreur404 pour faire mauvaise route   
+error404:
+    path: /{url}
+    controller: App\Controller\ErrorController::notFound
+    requirements:
+        url: .*
